@@ -9,7 +9,7 @@
         },
         {
             "route": "/login",
-            "rewrite": "/.auth/login/tokenmaster"
+            "rewrite": "/.auth/login/aad"
         }
     ],
     "responseOverrides": {
@@ -20,24 +20,14 @@
     },
     "auth": {
         "identityProviders": {
-            "customOpenIdConnectProviders": {
-                "tokenmaster": {
-                    "registration": {
-                        "clientIdSettingName": "MCCPRODTOKENMASTERCLIENTID",
-                        "clientCredential": {
-                            "clientSecretSettingName": "MCCPRODTOKENMASTERCLIENTPASSWORD"
-                        },
-                        "openIdConnectConfiguration": {
-                            "wellKnownOpenIdConfiguration": "https://ssoalpha.dvb.corpinter.net/v1/.well-known/openid-configuration"
-                        }
-                    },
-                    "login": {
-                        "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                        "scopes": [],
-                        "loginParameterNames": []
-                    }
-                }
+        "azureActiveDirectory": {
+            "userDetailsClaim": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+            "registration": {
+            "openIdIssuer": "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47",
+            "clientIdSettingName": "AZURE_CLIENT_ID",
+            "clientSecretSettingName": "AZURE_CLIENT_SECRET"
             }
+        }
         }
     }
 }
