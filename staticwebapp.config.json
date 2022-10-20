@@ -4,11 +4,7 @@
     },
     "routes": [
         {
-            "route": "/index*",
-            "allowedRoles": ["authenticated"]
-        },
-        {
-            "route": "/index/*",
+            "route": "/*",
             "allowedRoles": ["authenticated"]
         },
         {
